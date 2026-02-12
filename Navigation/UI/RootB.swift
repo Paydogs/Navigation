@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct RootB: View {
-    @Binding var path: NavigationPath
+    let navigator: Navigator
     
     var body: some View {
         Screen {
             VStack {
-                HeaderView(path: $path, title: "Root B")
+                HeaderView(navigator: navigator, title: "Root B")
                 
                 Text("Root B")
                     .font(.headline)
@@ -24,6 +24,5 @@ struct RootB: View {
 }
 
 #Preview {
-    let navPath = NavigationPath()
-    RootB(path: .constant(navPath))
+    RootB(navigator: Navigator())
 }

@@ -8,39 +8,34 @@
 import SwiftUI
 
 struct ViewA: View {
-    @Binding var path: NavigationPath
+    let navigator: Navigator
     
     var body: some View {
         Screen {
             VStack {
-                HeaderView(path: $path, title: "View A")
+                HeaderView(navigator: navigator, title: "View A")
                 
                 Text("View A")
                     .font(.headline)
                 
                 List {
                     Button("View A") {
-                        path.append(AppRoute.ViewA)
+                        navigator.push(AppRoute.ViewA)
                     }
                     Button("View B") {
-                        print("B pressed")
-                        path.append(AppRoute.ViewB)
+                        navigator.push(AppRoute.ViewB)
                     }
                     Button("View C") {
-                        print("C pressed")
-                        path.append(AppRoute.ViewC)
+                        navigator.push(AppRoute.ViewC)
                     }
                     Button("View D") {
-                        print("D pressed")
-                        path.append(AppRoute.ViewD)
+                        navigator.push(AppRoute.ViewD)
                     }
                     Button("View E") {
-                        print("E pressed")
-                        path.append(AppRoute.ViewE)
+                        navigator.push(AppRoute.ViewE)
                     }
                     Button("View F") {
-                        print("F pressed")
-                        path.append(AppRoute.ViewF)
+                        navigator.push(AppRoute.ViewF)
                     }
                 }
                 .listStyle(.plain)
@@ -51,6 +46,5 @@ struct ViewA: View {
 }
 
 #Preview {
-    let navPath = NavigationPath()
-    ViewA(path: .constant(navPath))
+    ViewA(navigator: Navigator())
 }

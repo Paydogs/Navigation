@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @Binding var path: NavigationPath
+    let navigator: Navigator
     let title: String
     
     var body: some View {
@@ -17,12 +17,11 @@ struct HeaderView: View {
             HStack {
                 Group {
                     Button {
-                        guard !path.isEmpty else { return }
-                        path.removeLast()
+                        navigator.pop()
                     } label: {
                         Image(systemName: "chevron.left")
                     }
-                    .hidden(path.isEmpty)
+                    .hidden(navigator.path.isEmpty)
                 }
                 .frame(width: 40)
                 Spacer()
@@ -39,6 +38,5 @@ struct HeaderView: View {
 }
 
 #Preview {
-    let navPath = NavigationPath()
-    HeaderView(path: .constant(navPath), title: "Header Bar")
+    HeaderView(navigator: Navigator(), title: "Header Bar")
 }

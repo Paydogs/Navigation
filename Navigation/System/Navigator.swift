@@ -20,8 +20,8 @@ enum AppRoute: Hashable {
 class Navigator: ObservableObject {
     @Published var path: NavigationPath
     
-    init(path: NavigationPath) {
-        self.path = path
+    init() {
+        self.path = NavigationPath()
     }
     
     func push(_ route: AppRoute) {
@@ -29,20 +29,27 @@ class Navigator: ObservableObject {
             path.append(route)
         }
     }
+    
+    func pop() {
+        guard !path.isEmpty else { return }
+        withAnimation {
+            path.removeLast()
+        }
+    }
 }
 
 struct ViewFactory {
     @ViewBuilder
-    static func makeView(for route: AppRoute, path: Binding<NavigationPath>) -> some View {
+    static func makeView(for route: AppRoute, navigator: Navigator) -> some View {
         switch route {
         case .ViewA:
-            ViewA(path: path)
+            ViewA(navigator: navigator)
         case .ViewB:
-            ViewB(path: path)
+            ViewB(navigator: navigator)
         case .ViewC:
-            ViewC(path: path)
+            ViewC(navigator: navigator)
         case .ViewD:
-            ViewD(path: path)
+            ViewD(navigator: navigator)
         case .ViewE:
             ViewE()
         case .ViewF:
