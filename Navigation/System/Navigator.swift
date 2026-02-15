@@ -8,20 +8,47 @@
 import SwiftUI
 import Combine
 
-enum AppRoute: Hashable {
+enum AppRoute: Hashable, Identifiable {
     case ViewA
     case ViewB
     case ViewC
     case ViewD
     case ViewE
     case ViewF
+    
+    var id: String {
+        switch self {
+        case .ViewA: return "ViewA"
+        case .ViewB: return "ViewB"
+        case .ViewC: return "ViewC"
+        case .ViewD: return "ViewD"
+        case .ViewE: return "ViewE"
+        case .ViewF: return "ViewF"
+        }
+    }
 }
 
 class Navigator: ObservableObject {
     @Published var path: NavigationPath
+    @Published var presentedSheet: AppRoute?
+    @Published var presentedFullScreen: AppRoute?
     
     init() {
         self.path = NavigationPath()
+    }
+    
+    func showBackButton() -> Bool {
+        path.count > 0 &&
+        presentedSheet == nil &&
+        presentedFullScreen == nil
+    }
+    
+    func showCloseSheetButton() -> Bool {
+        presentedSheet != nil
+    }
+    
+    func showCloseFullscreenButton() -> Bool {
+        presentedFullScreen != nil
     }
     
     func push(_ route: AppRoute) {
@@ -35,6 +62,27 @@ class Navigator: ObservableObject {
         withAnimation {
             path.removeLast()
         }
+    }
+    
+    func presentSheet(_ route: AppRoute) {
+        presentedSheet = route
+    }
+    
+    func presentFullScreen(_ route: AppRoute) {
+        presentedFullScreen = route
+    }
+    
+    func dismissSheet() {
+        presentedSheet = nil
+    }
+    
+    func dismissFullScreen() {
+        presentedFullScreen = nil
+    }
+    
+    func dismissAll() {
+        presentedSheet = nil
+        presentedFullScreen = nil
     }
 }
 

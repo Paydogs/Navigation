@@ -16,12 +16,29 @@ struct HeaderView: View {
             // Custom title bar — renders instantly with the view
             HStack {
                 Group {
-                    Button {
-                        navigator.pop()
-                    } label: {
-                        Image(systemName: "chevron.left")
+                    if (navigator.showBackButton()) {
+                        Button {
+                            navigator.pop()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                        }
                     }
-                    .hidden(navigator.path.isEmpty)
+                    
+                    if navigator.showCloseSheetButton() {
+                        Button {
+                            navigator.dismissSheet()
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                    }
+                    
+                    if navigator.showCloseFullscreenButton() {
+                        Button {
+                            navigator.dismissFullScreen()
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                    }
                 }
                 .frame(width: 40)
                 Spacer()
@@ -35,6 +52,8 @@ struct HeaderView: View {
         .frame(height: 64)
         .navigationBarHidden(true)
     }
+    
+    
 }
 
 #Preview {

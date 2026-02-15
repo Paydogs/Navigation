@@ -21,22 +21,22 @@ struct ViewC: View {
                 
                 List {
                     Button("View A") {
-                        navigator.push(AppRoute.ViewA)
+                        navigator.presentFullScreen(AppRoute.ViewA)
                     }
                     Button("View B") {
-                        navigator.push(AppRoute.ViewB)
+                        navigator.presentFullScreen(AppRoute.ViewB)
                     }
                     Button("View C") {
-                        navigator.push(AppRoute.ViewC)
+                        navigator.presentFullScreen(AppRoute.ViewC)
                     }
                     Button("View D") {
-                        navigator.push(AppRoute.ViewD)
+                        navigator.presentFullScreen(AppRoute.ViewD)
                     }
                     Button("View E") {
-                        navigator.push(AppRoute.ViewE)
+                        navigator.presentFullScreen(AppRoute.ViewE)
                     }
                     Button("View F") {
-                        navigator.push(AppRoute.ViewF)
+                        navigator.presentFullScreen(AppRoute.ViewF)
                     }
                 }
                 .listStyle(.plain)

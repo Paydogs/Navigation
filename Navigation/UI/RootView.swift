@@ -19,12 +19,24 @@ struct RootView: View {
                         ViewFactory.makeView(for: appRoute, navigator: navigatorA)
                     })
             }
+            .sheet(item: $navigatorA.presentedSheet) { appRoute in
+                ViewFactory.makeView(for: appRoute, navigator: navigatorA)
+            }
+            .fullScreenCover(item: $navigatorA.presentedFullScreen) { appRoute in
+                ViewFactory.makeView(for: appRoute, navigator: navigatorA)
+            }
             .tabItem {
                 Label("Root A", systemImage: "house")
             }
-
+            
             NavigationStack(path: $navigatorB.path) {
                 RootB(navigator: navigatorB)
+            }
+            .sheet(item: $navigatorA.presentedSheet) { sheet in
+                
+            }
+            .fullScreenCover(item: $navigatorA.presentedFullScreen) { fullScreen in
+                
             }
             .tabItem {
                 Label("Root B", systemImage: "gear")

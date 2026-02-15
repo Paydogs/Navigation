@@ -21,22 +21,22 @@ struct ViewB: View {
                 
                 List {
                     Button("View A") {
-                        navigator.push(AppRoute.ViewA)
+                        navigator.presentSheet(AppRoute.ViewA)
                     }
                     Button("View B") {
-                        navigator.push(AppRoute.ViewB)
+                        navigator.presentSheet(AppRoute.ViewB)
                     }
                     Button("View C") {
-                        navigator.push(AppRoute.ViewC)
+                        navigator.presentSheet(AppRoute.ViewC)
                     }
                     Button("View D") {
-                        navigator.push(AppRoute.ViewD)
+                        navigator.presentSheet(AppRoute.ViewD)
                     }
                     Button("View E") {
-                        navigator.push(AppRoute.ViewE)
+                        navigator.presentSheet(AppRoute.ViewE)
                     }
                     Button("View F") {
-                        navigator.push(AppRoute.ViewF)
+                        navigator.presentSheet(AppRoute.ViewF)
                     }
                 }
                 .listStyle(.plain)
