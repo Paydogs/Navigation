@@ -20,22 +20,22 @@ struct ViewB: View {
                     .font(.headline)
                 
                 List {
-                    Button("View A") {
+                    Button("Present View A as Sheet") {
                         navigator.presentSheet(AppRoute.ViewA)
                     }
-                    Button("View B") {
+                    Button("Present View B as Sheet") {
                         navigator.presentSheet(AppRoute.ViewB)
                     }
-                    Button("View C") {
+                    Button("Present View C as Sheet") {
                         navigator.presentSheet(AppRoute.ViewC)
                     }
-                    Button("View D") {
+                    Button("Present View D as Sheet") {
                         navigator.presentSheet(AppRoute.ViewD)
                     }
-                    Button("View E") {
+                    Button("Present View E as Sheet") {
                         navigator.presentSheet(AppRoute.ViewE)
                     }
-                    Button("View F") {
+                    Button("Present View F as Sheet") {
                         navigator.presentSheet(AppRoute.ViewF)
                     }
                 }

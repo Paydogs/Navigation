@@ -20,22 +20,22 @@ struct ViewC: View {
                     .font(.headline)
                 
                 List {
-                    Button("View A") {
+                    Button("Present View A as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewA)
                     }
-                    Button("View B") {
+                    Button("Present View B as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewB)
                     }
-                    Button("View C") {
+                    Button("Present View C as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewC)
                     }
-                    Button("View D") {
+                    Button("Present View D as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewD)
                     }
-                    Button("View E") {
+                    Button("Present View E as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewE)
                     }
-                    Button("View F") {
+                    Button("Present View F as Fullscreen") {
                         navigator.presentFullScreen(AppRoute.ViewF)
                     }
                 }

@@ -28,27 +28,41 @@ enum AppRoute: Hashable, Identifiable {
     }
 }
 
+extension Navigator {
+    func isSheetPresented() -> Bool {
+        return !presentedSheetPath.isEmpty
+    }
+}
+
+extension Navigator {
+    
+}
+
 class Navigator: ObservableObject {
     @Published var path: NavigationPath
-    @Published var presentedSheet: AppRoute?
-    @Published var presentedFullScreen: AppRoute?
+//    @Published var presentedSheet: AppRoute?
+//    @Published var presentedFullScreen: AppRoute?
+    @Published var presentedSheetPath: NavigationPath
+    @Published var presentedFullScreenPath: NavigationPath
     
     init() {
         self.path = NavigationPath()
+        self.presentedSheetPath = NavigationPath()
+        self.presentedFullScreenPath = NavigationPath()
     }
     
     func showBackButton() -> Bool {
         path.count > 0 &&
-        presentedSheet == nil &&
-        presentedFullScreen == nil
+        presentedSheetPath.isEmpty &&
+        presentedFullScreenPath.isEmpty
     }
     
     func showCloseSheetButton() -> Bool {
-        presentedSheet != nil
+        presentedSheetPath.count > 0
     }
     
     func showCloseFullscreenButton() -> Bool {
-        presentedFullScreen != nil
+        presentedFullScreenPath.count > 0
     }
     
     func push(_ route: AppRoute) {
@@ -65,24 +79,25 @@ class Navigator: ObservableObject {
     }
     
     func presentSheet(_ route: AppRoute) {
-        presentedSheet = route
+        presentedSheetPath.append(route)
+        
     }
     
     func presentFullScreen(_ route: AppRoute) {
-        presentedFullScreen = route
+        presentedFullScreenPath.append(route)
     }
     
     func dismissSheet() {
-        presentedSheet = nil
+        presentedSheetPath.removeLast(presentedSheetPath.count)
     }
     
     func dismissFullScreen() {
-        presentedFullScreen = nil
+        presentedFullScreenPath.removeLast(presentedFullScreenPath.count)
     }
     
     func dismissAll() {
-        presentedSheet = nil
-        presentedFullScreen = nil
+        presentedSheetPath.removeLast(presentedSheetPath.count)
+        presentedFullScreenPath.removeLast(presentedFullScreenPath.count)
     }
 }
 

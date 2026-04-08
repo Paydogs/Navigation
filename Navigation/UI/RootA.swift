@@ -20,22 +20,22 @@ struct RootA: View {
                     .font(.headline)
                 
                 List {
-                    Button("View A") {
+                    Button("Push View A") {
                         navigator.push(AppRoute.ViewA)
                     }
-                    Button("View B") {
+                    Button("Push View B") {
                         navigator.push(AppRoute.ViewB)
                     }
-                    Button("View C") {
+                    Button("Push View C") {
                         navigator.push(AppRoute.ViewC)
                     }
-                    Button("View D") {
+                    Button("Push View D") {
                         navigator.push(AppRoute.ViewD)
                     }
-                    Button("View E") {
+                    Button("Push View E") {
                         navigator.push(AppRoute.ViewE)
                     }
-                    Button("View F") {
+                    Button("Push View F") {
                         navigator.push(AppRoute.ViewF)
                     }
                 }
